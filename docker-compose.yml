@@ -18,3 +18,10 @@ services:
       - "INFLUXDB_DB=internet_speed_test"
     volumes:
       - "./data/influxdb/:/var/lib/influxdb"
+  
+  speedtest:
+    restart: always
+    image: grafana:latest
+    container_name: internet_speed_test
+    depends_on:
+      - influxdb
